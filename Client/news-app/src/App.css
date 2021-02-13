@@ -1,0 +1,15 @@
+.login-card{
+  
+  align-content: center;
+  min-height: 70%;  
+  min-height: 70vh; 
+  display: flex;
+  align-items: center;
+ }
+
+.login-holder{
+  border-style: solid;
+  border-radius: 24px;
+  margin: auto;
+  border-color: 1px   black;
+}
