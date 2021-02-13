@@ -4,18 +4,14 @@ const News = require("../models/News");
 const fs = require("fs");
 
 
+
 router.post("/",async (req, res)=>{
     try {
-        var image = req.files.image;
-        image.mv("../Server/images/" + image.name, function (error, result) {
-          if (error) throw error;
-        });
-
         console.log(image)
         const news = new News({
             title: req.body.title,
             content: req.body.content,
-            photos: "image/"+image.name,
+            photos: "none",
             date: req.body.date,
             field: req.body.field
         });
@@ -26,6 +22,13 @@ router.post("/",async (req, res)=>{
         res.status().send("Error while adding news : "+ err);
     }
 })
+router.post("/image", async (req, res) =>{
+    var image = req.files.image;
+    image.mv("../Server/images/" + image.name, function (error, result) {
+      if (error) throw error;
+    });
+
+})
 
 router.get("/", async (req, res) => {
     let page = req.query.page;
@@ -35,11 +38,6 @@ router.get("/", async (req, res) => {
     try{
         const news = await News.find().sort().limit(parseInt(limit));
         res.send(news);
-        console.log("page : "+page)
-        console.log("limit : "+limit)
-        console.log("field : "+filter)
-        console.log("sortedby : "+sortby)
-        console.log("url param : "+ req.params);
     } catch(err) {
         res.status(500).send("Error getting the news : "+err);
         console.log("Error getting the news : "+err);
@@ -48,8 +46,10 @@ router.get("/", async (req, res) => {
 
 router.delete("/:id", async (req, res) =>{
     try {
-        const newsDeleted = await News.findByIdAndRemove({ _id: req.params.id });
-        res.send("News removed successfuly");
+        const imageLocation = await News.find({ _id: req.params.id });
+       // const newsDeleted = await News.findByIdAndRemove({ _id: req.params.id });
+        res.send(imageLocation+" hhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhh");
+       // res.send("News removed successfuly");
     } catch(err){
         console.log("Error while removing the news : "+err);
         res.send("Error while removing the news : "+err);
