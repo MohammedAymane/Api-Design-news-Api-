@@ -31,8 +31,16 @@ router.get("/", async (req, res) => {
     let limit = req.query.limit;
     let filter = req.query.filter;
     let sortby = req.query.sortby;
+    console.log("page : "+page+" limit : "+limit)
     try{
-        const news = await News.find().sort().limit(parseInt(limit));
+        var news
+        if(filter) {
+            news = await News.find({field: filter}).sort(sortby);
+            news = news.slice(page*10,page*10+limit);
+        }else{
+            news = await News.find().sort(sortby);
+            news = news.slice(page*10,page*10+limit);
+        }
         res.send(news);
     } catch(err) {
         res.status(500).send("Error getting the news : "+err);
@@ -43,9 +51,9 @@ router.get("/", async (req, res) => {
 router.delete("/:id", async (req, res) =>{
     try {
         const imageLocation = await News.find({ _id: req.params.id });
-       // const newsDeleted = await News.findByIdAndRemove({ _id: req.params.id });
+        const newsDeleted = await News.findByIdAndRemove({ _id: req.params.id });
         res.send(imageLocation+" hhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhh");
-       // res.send("News removed successfuly");
+        res.send("News removed successfuly");
     } catch(err){
         console.log("Error while removing the news : "+err);
         res.send("Error while removing the news : "+err);
