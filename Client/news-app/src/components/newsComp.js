@@ -2,10 +2,10 @@ import React from 'react'
 
 export default function NewsComp() {
     return (
-        <div className = "container-fluid">
+        <div className = "container-fluid py-3  ">
             <div className = "row ">
                 <div className = "col  text-center">
-                    <h1>title of the shit is must be okay </h1>
+                    <h3 class="display-5 news-title">title of the shit is must be okay </h3>
                 </div>
                 <div className = "col">
                 <h6><span class="badge badge-pill badge-dark">Sport</span></h6>
