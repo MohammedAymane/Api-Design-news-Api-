@@ -1,5 +1,7 @@
+body{
+  font-family: 'Lato', sans-serif;
+}
 .login-card{
-  
   align-content: center;
   min-height: 70%;  
   min-height: 70vh; 
@@ -12,4 +14,17 @@
   border-radius: 24px;
   margin: auto;
   border-color: 1px   black;
+}
+.img-fluid{
+  height: 240px;
+  width: 480px;
+}
+.news-title{
+  font-weight:bolder;
+}
+.jumbotron{
+  background-color: rgb(66, 66, 66);
+}
+.jumbotron > h1 {
+  color: #fff;
 }
