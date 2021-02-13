@@ -13,3 +13,7 @@
   margin: auto;
   border-color: 1px   black;
 }
+.img-fluid{
+  height: 240px;
+  width: 480px;
+}
