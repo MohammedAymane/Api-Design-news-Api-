@@ -7,7 +7,10 @@ const fs = require("fs");
 
 router.post("/",async (req, res)=>{
     try {
-        console.log(image)
+        var image = req.files.image;
+        image.mv("../Server/images/" + image.name, function (error, result) {
+          if (error) throw error;
+        });
         const news = new News({
             title: req.body.title,
             content: req.body.content,
@@ -21,13 +24,6 @@ router.post("/",async (req, res)=>{
         console.log("Error while adding news : "+ err);
         res.status().send("Error while adding news : "+ err);
     }
-})
-router.post("/image", async (req, res) =>{
-    var image = req.files.image;
-    image.mv("../Server/images/" + image.name, function (error, result) {
-      if (error) throw error;
-    });
-
 })
 
 router.get("/", async (req, res) => {
