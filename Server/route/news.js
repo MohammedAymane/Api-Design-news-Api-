@@ -27,11 +27,10 @@ router.post("/",async (req, res)=>{
 })
 
 router.get("/", async (req, res) => {
-    let page = req.query.page;
+    let page = (req.query.page)-1;
     let limit = req.query.limit;
     let filter = req.query.filter;
     let sortby = req.query.sortby;
-    console.log("page : "+page+" limit : "+limit)
     try{
         var news
         if(filter) {
