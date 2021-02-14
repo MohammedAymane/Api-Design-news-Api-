@@ -33,3 +33,7 @@ body{
   border-radius: 24px;
   
 }
+.edit-news-cont{
+  border-bottom: rgb(207, 207, 207);
+  border-bottom-style: solid;
+}
