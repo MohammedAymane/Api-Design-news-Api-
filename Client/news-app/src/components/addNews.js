@@ -30,18 +30,12 @@ export default function AddNews() {
                                         <textarea className="form-control rounded-0" id="exampleFormControlTextarea1" rows={10} defaultValue={""} />
                                     </div>
                                     <div className="form-group d-flex justify-content-center">
-                                        <div className="dropdown ">
-                                            <button className="btn btn-outline-secondary dropdown-toggle" type="button" id="dropdownMenuButton2" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                                Choose a field
-                                             </button>
-                                            <div className="dropdown-menu" aria-labelledby="dropdownMenuButton2">
-                                                <a className="dropdown-item" href="#">Field</a>
-                                                <a className="dropdown-item" href="#">Field</a>
-                                                <a className="dropdown-item" href="#">Field</a>
-                                                <a className="dropdown-item" href="#">Field</a>
-                                                <a className="dropdown-item" href="#">Field</a>
-                                            </div>
-                                        </div>
+                                        <select class="custom-select" id="inputGroupSelect01">
+                                            <option selected>Please choose field</option>
+                                            <option value="1" >One</option>
+                                            <option value="2">Two</option>
+                                            <option value="3">Three</option>
+                                        </select>
                                     </div>
                                     <div className="form-group">
                                         <label htmlFor="exampleFormControlFile1">Add a photo</label>
@@ -53,7 +47,7 @@ export default function AddNews() {
                             </div>
                             <div className="modal-footer d-flex justify-content-center">
                                 <button type="button" className="btn btn-secondary"> Post</button>
-                                <button type="button" className="btn btn-outline-secondary"data-dismiss="modal">Close</button>
+                                <button type="button" className="btn btn-outline-secondary" data-dismiss="modal">Close</button>
                             </div>
                         </div>
                     </div>

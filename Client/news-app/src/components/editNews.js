@@ -1,31 +1,37 @@
-import React from 'react'
+import React,{useState} from 'react'
 
-export default function EditNews() {
+export default function EditNews(props) {
+  const fields = [
+      "Sports",
+      "Economie",
+      "Politique"
+  ]
+  const [news, setnews] = useState(props.news)
     return (
         <div className = "container-fluid d-flex justify-content-center edit-news-cont">
             <form>
                 <div className="form-group">
-                    <label htmlFor="exampleInputEmail1">Title of the news</label>
-                    <input type="text" className="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Enter title" />
+                    <label htmlFor={news.id+"exampleInputEmail1"}>Title of the news</label>
+                    <input type="text" className="form-control" id={news.id+"exampleInputEmail1"} aria-describedby="emailHelp" placeholder="Enter title" defaultValue = {news.title}/>
 
                 </div>
                 <div className="form-group">
                     <label htmlFor="exampleFormControlTextarea1">News Body, What's happening?</label>
-                    <textarea className="form-control rounded-0" id="exampleFormControlTextarea1" rows={10} defaultValue={""} />
+                    <textarea className="form-control rounded-0" id="exampleFormControlTextarea1" rows={10} defaultValue={news.content} />
                 </div>
                 <div className="form-group d-flex justify-content-center">
-                    <div className="dropdown ">
-                        <button className="btn btn-outline-secondary dropdown-toggle" type="button" id="dropdownMenuButton2" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                            Choose a field
-                                             </button>
-                        <div className="dropdown-menu" aria-labelledby="dropdownMenuButton2">
-                            <a className="dropdown-item" href="#">Field</a>
-                            <a className="dropdown-item" href="#">Field</a>
-                            <a className="dropdown-item" href="#">Field</a>
-                            <a className="dropdown-item" href="#">Field</a>
-                            <a className="dropdown-item" href="#">Field</a>
-                        </div>
-                    </div>
+                <select class="custom-select" id={"inputGroupSelect01"+ news.id}>
+                    {fields.map((field,i)=>{
+                        
+                        if(field == news.field){
+                            return <option value={i} selected>{field}</option>
+                        }
+                        else{
+                           return  <option value={i}>{field}</option>
+                        }
+                    })}
+    
+  </select>
                 </div>
                 <div className="form-group">
                     <label htmlFor="exampleFormControlFile1">Add a photo</label>
