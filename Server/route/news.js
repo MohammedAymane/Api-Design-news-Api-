@@ -8,15 +8,16 @@ const fs = require("fs");
 router.post("/",async (req, res)=>{
     try {
         var image = req.files.image;
-        image.mv("../Server/images/" + image.name, function (error, result) {
+        image.mv("./Server/images/" + image.name, function (error, result) {
           if (error) throw error;
         });
+        var parsedData = JSON.parse(req.body.data);
         const news = new News({
-            title: req.body.title,
-            content: req.body.content,
-            photos: "none",
-            date: req.body.date,
-            field: req.body.field
+            title: parsedData.title,
+            content: parsedData.content,
+            photos: "./Server/images/" + image.name,
+            date: parsedData.date,
+            field: parsedData.field
         });
         const savedNews = await news.save();
         res.send("News added successfully");
@@ -28,7 +29,13 @@ router.post("/",async (req, res)=>{
 
 router.get("/", async (req, res) => {
     let page = (req.query.page)-1;
+    if(!page){
+        page = 0;
+    }
     let limit = req.query.limit;
+    if(!limit){
+        limit = 10;
+    }
     let filter = req.query.filter;
     let sortby = req.query.sortby;
     try{
@@ -49,14 +56,42 @@ router.get("/", async (req, res) => {
 
 router.delete("/:id", async (req, res) =>{
     try {
-        const imageLocation = await News.find({ _id: req.params.id });
+        const imageLocation = await News.findOne({ _id: req.params.id });
+        try {
+            fs.unlinkSync("." + imageLocation.photos);
+            //Image removed
+          } catch (err) {
+            console.error(err);
+          }
         const newsDeleted = await News.findByIdAndRemove({ _id: req.params.id });
-        res.send(imageLocation+" hhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhh");
         res.send("News removed successfuly");
     } catch(err){
         console.log("Error while removing the news : "+err);
         res.send("Error while removing the news : "+err);
     }
+})
+
+
+router.put("/:id", async (req ,res) =>{
+    try{
+        var image = req.files.image;
+        image.mv("./Server/images/" + image.name, function (error, result) {
+          if (error) throw error;
+        });
+        var parsedData = JSON.parse(req.body.data);
+        const updatedNews = {
+            title: parsedData.title,
+            content: parsedData.content,
+            photos: "./Server/images/" + image.name,
+            date: parsedData.date,
+            field: parsedData.field
+        };
+        const newsUpdated = await News.findOneAndUpdate({ _id: req.params.id },updatedNews)
+        res.send("News updated successfuly");
+    } catch(err){
+        res.send("Error while updating the news : "+err)
+        console.log("Error while updating the news : "+err)
+    };
 })
 
 module.exports = router;
