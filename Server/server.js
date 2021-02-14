@@ -28,5 +28,5 @@ app.use('/news', require("./route/news"));
 const PORT = process.env.PORT || 9000;
 
 app.listen(PORT, ()=>{
-    console.log("server started on port : "+PORT)
+    console.log("Server started on port : "+PORT)
 });
