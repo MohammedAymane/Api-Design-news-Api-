@@ -1,6 +1,10 @@
 import React from 'react'
 
-export default function FilterBar() {
+export default function FilterBar(props) {
+    const handleLimitChange = (e)=>{
+        props.changeLimitInf(e.target.value)
+        
+    }
     return (
         <div className="container d-flex justify-content-center">
             <div className="row text-center">
@@ -9,7 +13,7 @@ export default function FilterBar() {
                         <div className="input-group-prepend">
                             <span className="input-group-text  badge-dark" id="inputGroup-sizing-default">Page size</span>
                         </div>
-                        <input type="text" className="form-control" aria-label="Default" aria-describedby="inputGroup-sizing-default" />
+                        <input type="text" className="form-control" aria-label="Default" aria-describedby="inputGroup-sizing-default" onChange = { handleLimitChange}/>
                     </div>
 
                 </div>
