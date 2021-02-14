@@ -6,26 +6,39 @@ import Pagination from './pagination'
 export default function Home() {
     const [page, setpage] = useState(1)
     const [limit, setlimit] = useState(10)
+    const [Filter, setFilter] = useState("all")
+    const [sort, setsort] = useState("date")
     const [newsList, setnewsList] = useState([
         {  title: "title",
             content: "desciption",
             photos: "https://html5box.com/html5gallery/images/Wilderness_1024.jpg",
-            field: "field"},
+            field: "Sports"},
             {  title: "title",
             content: "desciption",
             photos: "https://html5box.com/html5gallery/images/Wilderness_1024.jpg",
-            field: "field"},
+            field: "Economie"},
             {  title: "title",
             content: "desciption",
             photos: "https://html5box.com/html5gallery/images/Wilderness_1024.jpg",
-            field: "field"}
+            field: "Politique"}
     ])
     const   changeLimit = function(x){
         setlimit(x)
         
     }
     const   changePage = async function(x){
-        setpage(page + x)  
+        if(page + x> 1){
+            setpage(page + x) 
+        }
+        
+    }
+    const changeFilter = (filter)=>{
+        setFilter(filter)
+
+    }
+    const changeSort = (sort)=>{
+        setsort(sort)
+
     }
     return (
         <div>
@@ -35,11 +48,14 @@ export default function Home() {
             </div>
             <div className = "container  justify-content-center">
                 <div className = "row text-center">
-                <FilterBar changeLimitInf = {changeLimit} />             
+                <FilterBar changeLimitInf = {changeLimit} filter = {changeFilter}  sort = {changeSort}/>             
                 </div>
             <div className = "row text-center py-5">
             {newsList.map(element => {
-              return <NewsComp  news = {element}/>  
+              return( 
+              <div className = "col-4">
+              <NewsComp  news = {element}/>
+              </div>)  
             })}
             
             </div>

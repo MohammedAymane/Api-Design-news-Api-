@@ -7,12 +7,8 @@ export default function Pagination(props) {
         props.setPager(1)
     }
     const handlePre = (e)=>{
-       
-
-            
             props.setPager(-1)
-        
-        
+
     }
     return (
         <div className="container d-flex justify-content-center">
