@@ -4,7 +4,7 @@ const cors = require("cors");
 const upload = require("express-fileupload");
 
 const corsOption = {
-    origin: "http://localhost:5500",
+    origin: "http://localhost:3000",
   }
 // Connect to the Database
 connectDB();
@@ -28,5 +28,5 @@ app.use('/news', require("./route/news"));
 const PORT = process.env.PORT || 9000;
 
 app.listen(PORT, ()=>{
-    console.log("server started on port : "+PORT)
+    console.log("Server started on port : "+PORT)
 });
