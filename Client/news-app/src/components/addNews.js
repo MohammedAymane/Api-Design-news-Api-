@@ -5,7 +5,7 @@ export default function AddNews() {
         <div className="container d-flex justify-content-center py-2">
             <div>
                 {/* Button trigger modal */}
-                <button type="button" className="btn btn-dark btn-lg" data-toggle="modal" data-target="#exampleModal">
+                <button type="button" className="btn btn-dark btn-lg add-news-btn" data-toggle="modal" data-target="#exampleModal">
                     Add News
   </button>
                 {/* Modal */}

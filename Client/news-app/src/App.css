@@ -28,3 +28,8 @@ body{
 .jumbotron > h1 {
   color: #fff;
 }
+.add-news-btn{
+  width: 50vh;
+  border-radius: 24px;
+  
+}
