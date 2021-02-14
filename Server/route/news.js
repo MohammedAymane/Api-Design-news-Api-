@@ -29,7 +29,7 @@ router.post("/",async (req, res)=>{
 
 router.get("/", async (req, res) => {
     let page = (req.query.page)-1;
-    if(!page){
+    if(!(req.query.page)){
         page = 0;
     }
     let limit = req.query.limit;
