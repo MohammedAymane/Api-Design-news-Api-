@@ -8,14 +8,14 @@ const fs = require("fs");
 router.post("/",async (req, res)=>{
     try {
         var image = req.files.image;
-        image.mv("./Server/images/" + image.name, function (error, result) {
+        image.mv("./images/" + image.name, function (error, result) {
           if (error) throw error;
         });
         var parsedData = JSON.parse(req.body.data);
         const news = new News({
             title: parsedData.title,
             content: parsedData.content,
-            photos: "./Server/images/" + image.name,
+            photos: "./images/" + image.name,
             date: parsedData.date,
             field: parsedData.field
         });
@@ -58,7 +58,7 @@ router.delete("/:id", async (req, res) =>{
     try {
         const imageLocation = await News.findOne({ _id: req.params.id });
         try {
-            fs.unlinkSync("." + imageLocation.photos);
+            fs.unlinkSync(imageLocation.photos);
             //Image removed
           } catch (err) {
             console.error("Error while removing the image : "+err);
