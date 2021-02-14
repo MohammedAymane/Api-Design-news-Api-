@@ -61,7 +61,7 @@ router.delete("/:id", async (req, res) =>{
             fs.unlinkSync("." + imageLocation.photos);
             //Image removed
           } catch (err) {
-            console.error(err);
+            console.error("Error while removing the image : "+err);
           }
         const newsDeleted = await News.findByIdAndRemove({ _id: req.params.id });
         res.send("News removed successfuly");
