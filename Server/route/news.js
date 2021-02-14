@@ -94,4 +94,80 @@ router.put("/:id", async (req ,res) =>{
     };
 })
 
+
+
+router.get("/:id", async (req, res) =>{
+    try {
+
+        let page = (req.query.page)-1;
+        if(!(req.query.page)){
+            page = 0;
+        }
+        let limit = req.query.limit;
+        if(!limit){
+            limit = 10;
+        }
+        let filter = req.query.filter;
+        let sortby = req.query.sortby;
+
+
+        var newsById;
+        if(req.params.id=="first"){
+
+            try{
+                var news
+                if(filter) {
+                    news = await News.find({field: filter}).sort(sortby);
+                    news = news.slice(page*10,page*10+limit);
+                }else{
+                    news = await News.find().sort(sortby);
+                    news = news.slice(page*10,page*10+limit);
+                }
+                res.send(news[0]);
+            } catch(err) {
+                res.status(500).send("Error getting the first news : "+err);
+                console.log("Error getting the first news : "+err);
+            }
+
+
+        }else if(req.params.id=="last"){
+
+            try{
+                var news
+                if(filter) {
+                    news = await News.find({field: filter}).sort(sortby);
+                    news = news.slice(page*10,page*10+limit);
+                }else{
+                    news = await News.find().sort(sortby);
+                    news = news.slice(page*10,page*10+limit);
+                }
+                res.send(news[news.length-1]);
+            } catch(err) {
+                res.status(500).send("Error getting the last news : "+err);
+                console.log("Error getting the last news : "+err);
+            }
+
+
+        }else if(req.params.id=="count"){
+
+            try{
+                const news = await News.find();
+                res.send(news.length);
+            } catch(err) {
+                res.status(500).send("Error getting the number of news : "+err);
+                console.log("Error getting the number of news :"+err);
+            }
+
+        }else{
+            newsById = await News.findOne({ _id: req.params.id });
+            res.send(newsById);
+        }
+    } catch(err){
+        console.log("Error while getting the news by id : "+err);
+        res.send("Error while getting the news by id : "+err);
+    }
+})
+
+
+
 module.exports = router;
