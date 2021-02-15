@@ -14,7 +14,7 @@ export default function NewsComp(props) {
                 </div>
                 <div className = "col-12">
                     <p>{props.news.content}</p>
-                    <img src={  props.news.photos } class="img-fluid rounded mx-auto d-block" alt="Responsive image"></img>
+                    <img src={  "http://localhost:9000/" + props.news.photos.substr(2) } class="img-fluid rounded mx-auto d-block" alt="Responsive image"></img>
                    
                 </div>
 
