@@ -8,12 +8,16 @@ export default function EditNews(props) {
   ]
   const [news, setnews] = useState(props.news)
     return (
-        <div className = "container-fluid d-flex justify-content-center edit-news-cont">
+        <div className = "container-fluid d-flex justify-content-center  edit-news-cont">
             <form>
+            
                 <div className="form-group">
                     <label htmlFor={news.id+"exampleInputEmail1"}>Title of the news</label>
                     <input type="text" className="form-control" id={news.id+"exampleInputEmail1"} aria-describedby="emailHelp" placeholder="Enter title" defaultValue = {news.title}/>
 
+                </div>
+                <div className="form-group">
+            <img src={news.photos} class="img-fluid rounded mx-auto d-block" alt="Responsive image"></img>
                 </div>
                 <div className="form-group">
                     <label htmlFor="exampleFormControlTextarea1">News Body, What's happening?</label>

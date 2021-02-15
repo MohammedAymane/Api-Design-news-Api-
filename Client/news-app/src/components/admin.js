@@ -6,6 +6,8 @@ import EditNews from './editNews'
 export default function Admin() {
     const [page, setpage] = useState(1)
     const [limit, setlimit] = useState(10)
+    const [Filter, setFilter] = useState("all")
+    const [sort, setsort] = useState("date")
     const [newsList, setnewsList] = useState([
         {  id : 1,
             title: "title 1",
@@ -28,6 +30,24 @@ export default function Admin() {
             photos: "https://html5box.com/html5gallery/images/Wilderness_1024.jpg",
             field: "Sports"}
     ])
+    const   changeLimit = function(x){
+        setlimit(x)
+        
+    }
+    const   changePage = async function(x){
+        if(page + x> 1){
+            setpage(page + x) 
+        }
+        
+    }
+    const changeFilter = (filter)=>{
+        setFilter(filter)
+
+    }
+    const changeSort = (sort)=>{
+        setsort(sort)
+
+    }
     return (
         <div>
             <div>
@@ -45,17 +65,21 @@ export default function Admin() {
                     </div>
                     <div className="row text-center py-5 justify-content-center">
 
-                        <FilterBar />
+                    <FilterBar changeLimitInf = {changeLimit} filter = {changeFilter}  sort = {changeSort}/>             
+
 
                     </div>
-                    <div className="row text-center py-2">
+                    <div className="row text-center my-2">
                     {newsList.map(element => {
-              return <EditNews  news = {element}/>  
+               return( 
+                <div className = "col-4">
+                <EditNews  news = {element}/>
+                </div>)  
             })}
                        
                        
                     </div>
-                    <Pagination />
+                    <Pagination page = {page} setPager = {changePage}/>
                 </div>
             </div>
         </div>
