@@ -21,6 +21,8 @@ app.get("/",(req, res) =>{
     res.send("API running")
 })
 
+app.use('/images',express.static("./images"));
+
 // Define Routes
 app.use('/news', require("./route/news"));
 
