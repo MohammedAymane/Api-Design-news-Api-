@@ -4,6 +4,7 @@ import FilterBar from './FilterBar'
 import Pagination from './pagination'
 
 export default function Home() {
+    const URL  = "http://localhost:9000"
     const [page, setpage] = useState(1)
     const [limit, setlimit] = useState(10)
     const [Filter, setFilter] = useState("all")
@@ -12,12 +13,17 @@ export default function Home() {
        
     ])
     useEffect(async () => {
-        var data = await fetch("http://localhost:9000/news")
+        let urlFormater = URL + "/news?"
+        if(Filter != "all"){
+            urlFormater += "?filter=Field9" 
+        }
+        var data = await fetch(urlFormater)
         var json = await data.json();
         setnewsList(json)
-    },[])
+    },[Filter])
     const   changeLimit = function(x){
         setlimit(x)
+        
         
     }
     const   changePage = async function(x){
