@@ -1,35 +1,26 @@
-import React, { useState } from 'react';
+import React, { useState,useEffect } from 'react';
 import FilterBar from './FilterBar'
 import Pagination from './pagination'
 import AddNews from './addNews'
 import EditNews from './editNews'
 export default function Admin() {
+    const URL  = "http://localhost:9000"
     const [page, setpage] = useState(1)
     const [limit, setlimit] = useState(10)
     const [Filter, setFilter] = useState("all")
     const [sort, setsort] = useState("date")
     const [newsList, setnewsList] = useState([
-        {  id : 1,
-            title: "title 1",
-            content: "desciption",
-            photos: "https://html5box.com/html5gallery/images/Wilderness_1024.jpg",
-            field: "Sports"},
-            {  id : 2,
-                title: "title costum ",
-            content: "desciption",
-            photos: "https://html5box.com/html5gallery/images/Wilderness_1024.jpg",
-            field: "Sports"},
-            {  id : 3,
-                title: "title ok ",
-            content: "desciption",
-            photos: "https://html5box.com/html5gallery/images/Wilderness_1024.jpg",
-            field: "Sports"},
-            {  id : 4,
-                title: "title",
-            content: "desciption",
-            photos: "https://html5box.com/html5gallery/images/Wilderness_1024.jpg",
-            field: "Sports"}
+       
     ])
+    useEffect(async () => {
+        let urlFormater = URL + "/news?"
+        if(Filter != "all"){
+            urlFormater += "?filter=Field9" 
+        }
+        var data = await fetch(urlFormater)
+        var json = await data.json();
+        setnewsList(json)
+    },[Filter])
     const   changeLimit = function(x){
         setlimit(x)
         
@@ -73,7 +64,7 @@ export default function Admin() {
                     {newsList.map(element => {
                return( 
                 <div className = "col-4">
-                <EditNews  news = {element}/>
+                <EditNews  key = {element.id} news = {element}/>
                 </div>)  
             })}
                        
