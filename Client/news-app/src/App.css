@@ -35,7 +35,7 @@ body{
 }
 .edit-news-cont{
   
-  border-bottom: rgb(207, 207, 207);
-  border-bottom-style: solid;
-  
+  -webkit-box-shadow: 4px 3px 34px -8px rgba(0,0,0,0.67);
+  -moz-box-shadow: 4px 3px 34px -8px rgba(0,0,0,0.67);
+  box-shadow: 4px 3px 34px -8px rgba(0,0,0,0.67);
 }

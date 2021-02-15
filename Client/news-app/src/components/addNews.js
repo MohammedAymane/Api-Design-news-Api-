@@ -21,6 +21,8 @@ export default function AddNews() {
         formData.append("data", JSON.stringify(news))
         await fetch('http://localhost:9000/news', { method: "POST", 
           body: formData });
+          window.location.reload();
+          
     }
 
     return (

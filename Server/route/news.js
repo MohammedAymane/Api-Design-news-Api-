@@ -11,7 +11,7 @@ router.post("/",async (req, res)=>{
         var image = req.files.image;
         console.log(image.name.split(".")[1]);
         imagename = imagename +"."+ image.name.split(".")[image.name.split(".").length-1];
-        image.mv("./Server/images/" + imagename, function (error, result) {
+        image.mv("./images/" + imagename, function (error, result) {
           if (error) throw error;
         });
         var parsedData = JSON.parse(req.body.data);
@@ -45,10 +45,10 @@ router.get("/", async (req, res) => {
         var news
         if(filter) {
             news = await News.find({field: filter}).sort(sortby);
-            news = news.slice(page*10,page*10+limit);
+            news = news.slice(page*limit,page*limit+limit);
         }else{
             news = await News.find().sort(sortby);
-            news = news.slice(page*10,page*10+limit);
+            news = news.slice(page*limit,page*limit+limit);
         }
         res.send(news);
     } catch(err) {
@@ -61,7 +61,7 @@ router.delete("/:id", async (req, res) =>{
     try {
         const imageLocation = await News.findOne({ _id: req.params.id });
         try {
-            fs.unlinkSync("./Server" + imageLocation.photos.substr(1));
+            fs.unlinkSync( imageLocation.photos);
             //Image removed
           } catch (err) {
             console.error("Error while removing the old image : "+err);
@@ -102,7 +102,7 @@ router.put("/:id", async (req ,res) =>{
     try{
         const imageLocation = await News.findOne({ _id: req.params.id });
         try {
-            fs.unlinkSync("./Server" + imageLocation.photos.substr(1));
+            fs.unlinkSync( imageLocation.photos);
             //Image removed
           } catch (err) {
             console.error("Error while removing the old image : "+err);
@@ -111,7 +111,7 @@ router.put("/:id", async (req ,res) =>{
           var image = req.files.image;
           console.log(image.name.split(".")[1]);
           imagename = imagename +"."+ image.name.split(".")[image.name.split(".").length-1];
-          image.mv("./Server/images/" + imagename, function (error, result) {
+          image.mv("./images/" + imagename, function (error, result) {
             if (error) throw error;
           });
           

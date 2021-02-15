@@ -12,21 +12,35 @@ export default function Admin() {
     const [newsList, setnewsList] = useState([
        
     ])
-    useEffect(async () => {
+    const fetchData = async ()=>{
         let urlFormater = URL + "/news?"
         if(Filter != "all"){
-            urlFormater += "?filter=Field9" 
+            urlFormater += "filter=" + Filter 
         }
+        urlFormater +=  "&page=" + page+ "&limit=" + limit + "&sortby" + sort
         var data = await fetch(urlFormater)
         var json = await data.json();
+        console.log(json)
         setnewsList(json)
-    },[Filter])
+        
+    }
+    let NewsList =   newsList.map(element => {
+        return( 
+         <div className = "col-4">
+         <EditNews  key = {element.id} news = {element}/>
+         </div>)  
+     })
+    useEffect(async () => {
+       fetchData()
+
+    
+    },[Filter,sort,page,limit])
     const   changeLimit = function(x){
         setlimit(x)
         
     }
     const   changePage = async function(x){
-        if(page + x> 1){
+        if(page + x >  0){
             setpage(page + x) 
         }
         
@@ -61,12 +75,7 @@ export default function Admin() {
 
                     </div>
                     <div className="row text-center my-2">
-                    {newsList.map(element => {
-               return( 
-                <div className = "col-4">
-                <EditNews  key = {element.id} news = {element}/>
-                </div>)  
-            })}
+                   {NewsList}
                        
                        
                     </div>

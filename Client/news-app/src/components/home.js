@@ -12,28 +12,44 @@ export default function Home() {
     const [newsList, setnewsList] = useState([
        
     ])
-    useEffect(async () => {
+
+    const fetchData = async ()=>{
         let urlFormater = URL + "/news?"
         if(Filter != "all"){
-            urlFormater += "?filter=Field9" 
+            urlFormater += "filter=" + Filter 
         }
+        urlFormater +=  "&page=" + page+ "&limit=" + limit + "&sortby=" + sort
         var data = await fetch(urlFormater)
         var json = await data.json();
+        console.log(json)
         setnewsList(json)
-    },[Filter])
-    const   changeLimit = function(x){
-        setlimit(x)
         
+    }
+    let NewsList = newsList.map(element => {
+              return(
+              <div className = "col-4">
+              <NewsComp  news = {element}/>
+              </div>)
+            })
+    useEffect(async () => {
+       fetchData()
+
+    
+    },[Filter,sort,page,limit])
+    const   changeLimit = async function(x){
+        setlimit(x)
+       
         
     }
     const   changePage = async function(x){
-        if(page + x> 1){
+        if(page + x >  0){
             setpage(page + x) 
         }
         
     }
     const changeFilter = (filter)=>{
         setFilter(filter)
+       
 
     }
     const changeSort = (sort)=>{
@@ -50,13 +66,8 @@ export default function Home() {
                 <div className = "row text-center">
                 <FilterBar changeLimitInf = {changeLimit} filter = {changeFilter}  sort = {changeSort}/>             
                 </div>
-            <div className = "row text-center py-5">
-            {newsList.map(element => {
-              return( 
-              <div className = "col-4">
-              <NewsComp  news = {element}/>
-              </div>)  
-            })}
+            <div className = "row text-center py-5" >
+            {NewsList}
             
             </div>
              <Pagination page = {page} setPager = {changePage}/>

@@ -21,10 +21,15 @@ export default function EditNews(props) {
         formData.append("data", JSON.stringify(news))
         await fetch('http://localhost:9000/news/'+ news._id , { method: "PUT", 
           body: formData });
+          window.location.reload();
     }
-    
+    const deleteNews = async () => {
+        await fetch('http://localhost:9000/news/'+ news._id , { method: "DELETE"
+          });
+          window.location.reload();
+    }
     return (
-        <div className="container-fluid d-flex justify-content-center  edit-news-cont">
+        <div className="container-fluid d-flex justify-content-center my-5 edit-news-cont">
             <form>
 
                 <div className="form-group">
@@ -95,7 +100,7 @@ export default function EditNews(props) {
 
                             </div>
                             <div className="col ">
-                                <button type="button" className="btn btn-outline-secondary">Delete</button>
+                                <button type="button" className="btn btn-outline-secondary" onClick = {deleteNews}>Delete</button>
 
                             </div>
                         </div>
