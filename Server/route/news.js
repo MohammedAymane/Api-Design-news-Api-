@@ -6,16 +6,19 @@ const fs = require("fs");
 
 
 router.post("/",async (req, res)=>{
+    var imagename = Date.now();
     try {
         var image = req.files.image;
-        image.mv("./images/" + image.name, function (error, result) {
+        console.log(image.name.split(".")[1]);
+        imagename = imagename +"."+ image.name.split(".")[image.name.split(".").length-1];
+        image.mv("./Server/images/" + imagename, function (error, result) {
           if (error) throw error;
         });
         var parsedData = JSON.parse(req.body.data);
         const news = new News({
             title: parsedData.title,
             content: parsedData.content,
-            photos: "./images/" + image.name,
+            photos: "./images/" + imagename,
             date: parsedData.date,
             field: parsedData.field
         });
@@ -58,10 +61,10 @@ router.delete("/:id", async (req, res) =>{
     try {
         const imageLocation = await News.findOne({ _id: req.params.id });
         try {
-            fs.unlinkSync(imageLocation.photos);
+            fs.unlinkSync("./Server" + imageLocation.photos.substr(1));
             //Image removed
           } catch (err) {
-            console.error("Error while removing the image : "+err);
+            console.error("Error while removing the old image : "+err);
           }
         const newsDeleted = await News.findByIdAndRemove({ _id: req.params.id });
         res.send("News removed successfuly");
@@ -73,19 +76,32 @@ router.delete("/:id", async (req, res) =>{
 
 
 router.put("/:id", async (req ,res) =>{
+    var imagename = Date.now();
     try{
-        var image = req.files.image;
-        image.mv("./images/" + image.name, function (error, result) {
-          if (error) throw error;
-        });
+        const imageLocation = await News.findOne({ _id: req.params.id });
+        try {
+            fs.unlinkSync("./Server" + imageLocation.photos.substr(1));
+            //Image removed
+          } catch (err) {
+            console.error("Error while removing the old image : "+err);
+          }
+
+          var image = req.files.image;
+          console.log(image.name.split(".")[1]);
+          imagename = imagename +"."+ image.name.split(".")[image.name.split(".").length-1];
+          image.mv("./Server/images/" + imagename, function (error, result) {
+            if (error) throw error;
+          });
+          
         var parsedData = JSON.parse(req.body.data);
         const updatedNews = {
             title: parsedData.title,
             content: parsedData.content,
-            photos: "./images/" + image.name,
+            photos: "./images/" + imagename,
             date: parsedData.date,
             field: parsedData.field
         };
+
         const newsUpdated = await News.findOneAndUpdate({ _id: req.params.id },updatedNews)
         res.send("News updated successfuly");
     } catch(err){
