@@ -77,6 +77,28 @@ router.delete("/:id", async (req, res) =>{
 
 router.put("/:id", async (req ,res) =>{
     var imagename = Date.now();
+    if(req.files == null){
+        try {
+            const oldnews = await News.findOne({ _id: req.params.id });
+            var parsedData = JSON.parse(req.body.data);
+            const updatedNews = {
+                title: parsedData.title,
+                content: parsedData.content,
+                photos: oldnews.photos,
+                date: parsedData.date,
+                field: parsedData.field
+            };
+    
+            const newsUpdated = await News.findOneAndUpdate({ _id: req.params.id },updatedNews)
+            res.send("News updated successfuly");
+        } catch(err){
+            res.send("Error while updating the news without updating image : "+err)
+            console.log("Error while updating the news updating image : "+err)
+        };
+    
+    } else{
+
+    // ssssssss
     try{
         const imageLocation = await News.findOne({ _id: req.params.id });
         try {
@@ -105,9 +127,10 @@ router.put("/:id", async (req ,res) =>{
         const newsUpdated = await News.findOneAndUpdate({ _id: req.params.id },updatedNews)
         res.send("News updated successfuly");
     } catch(err){
-        res.send("Error while updating the news : "+err)
-        console.log("Error while updating the news : "+err)
+        res.send("Error while updating the news with updating image: "+err)
+        console.log("Error while updating the news with updating image : "+err)
     };
+    }
 })
 
 
