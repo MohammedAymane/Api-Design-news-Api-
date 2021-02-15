@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState ,useEffect } from 'react';
 import NewsComp from './newsComp'
 import FilterBar from './FilterBar'
 import Pagination from './pagination'
@@ -9,19 +9,13 @@ export default function Home() {
     const [Filter, setFilter] = useState("all")
     const [sort, setsort] = useState("date")
     const [newsList, setnewsList] = useState([
-        {  title: "title",
-            content: "desciption",
-            photos: "https://html5box.com/html5gallery/images/Wilderness_1024.jpg",
-            field: "Sports"},
-            {  title: "title",
-            content: "desciption",
-            photos: "https://html5box.com/html5gallery/images/Wilderness_1024.jpg",
-            field: "Economie"},
-            {  title: "title",
-            content: "desciption",
-            photos: "https://html5box.com/html5gallery/images/Wilderness_1024.jpg",
-            field: "Politique"}
+       
     ])
+    useEffect(async () => {
+        var data = await fetch("http://localhost:9000/news")
+        var json = await data.json();
+        setnewsList(json)
+    },[])
     const   changeLimit = function(x){
         setlimit(x)
         

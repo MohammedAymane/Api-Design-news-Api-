@@ -1,7 +1,7 @@
 import React from 'react'
 
 export default function NewsComp(props) {
-
+    const DIR_NAME = "../../../../../Server"
     return (
         <div className = "container-fluid py-3  ">
             <div className = "row ">
@@ -14,7 +14,7 @@ export default function NewsComp(props) {
                 </div>
                 <div className = "col-12">
                     <p>{props.news.content}</p>
-                    <img src={props.news.photos} class="img-fluid rounded mx-auto d-block" alt="Responsive image"></img>
+                    <img src={  props.news.photos } class="img-fluid rounded mx-auto d-block" alt="Responsive image"></img>
                    
                 </div>
 
