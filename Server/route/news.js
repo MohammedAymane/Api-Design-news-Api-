@@ -35,10 +35,12 @@ router.get("/", async (req, res) => {
     if(!(req.query.page)){
         page = 0;
     }
+    page = parseInt(page);
     let limit = req.query.limit;
     if(!limit){
         limit = 10;
     }
+    limit = parseInt(limit);
     let filter = req.query.filter;
     let sortby = req.query.sortby;
     try{
