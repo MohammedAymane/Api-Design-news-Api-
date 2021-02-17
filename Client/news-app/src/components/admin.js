@@ -17,7 +17,7 @@ export default function Admin() {
         if(Filter != "all"){
             urlFormater += "filter=" + Filter 
         }
-        urlFormater +=  "&page=" + page+ "&limit=" + limit + "&sortby" + sort
+        urlFormater +=  "&page=" + page+ "&limit=" + limit + "&sortby=" + sort
         var data = await fetch(urlFormater)
         var json = await data.json();
         console.log(json)
