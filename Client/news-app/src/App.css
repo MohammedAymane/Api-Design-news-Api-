@@ -34,8 +34,14 @@ body{
   
 }
 .edit-news-cont{
-  
+  margin-top: 1vw;
   -webkit-box-shadow: 4px 3px 34px -8px rgba(0,0,0,0.67);
   -moz-box-shadow: 4px 3px 34px -8px rgba(0,0,0,0.67);
   box-shadow: 4px 3px 34px -8px rgba(0,0,0,0.67);
+}
+.limit{
+  word-wrap: break-word;
+}
+h3{
+  font-size: 1vw;
 }

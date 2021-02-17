@@ -66,7 +66,7 @@ export default function Home() {
                 <div className = "row text-center">
                 <FilterBar changeLimitInf = {changeLimit} filter = {changeFilter}  sort = {changeSort}/>             
                 </div>
-            <div className = "row text-center py-5" >
+            <div className = "row text-center  my-3" >
             {NewsList}
             
             </div>

@@ -11,6 +11,7 @@ import Home from './components/home';
 import Login from './components/login';
 import Admin from './components/admin'
 function App() {
+  const url  = "http://localhost:20699"
   return (
     <div className="App">
       <header className="App-header">
@@ -18,10 +19,10 @@ function App() {
       <div>
         <Switch>
          
-          <Route path="/home">
+          <Route path= {url+"/home"}>
           <Home/>
           </Route>
-          <Route path="/admin">
+          <Route path= {url + "/admin"}>
           <Admin/>
           </Route>
           <Route path="/">
