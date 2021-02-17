@@ -111,7 +111,6 @@ router.put("/:id", async (req ,res) =>{
           }
 
           var image = req.files.image;
-          console.log(image.name.split(".")[1]);
           imagename = imagename +"."+ image.name.split(".")[image.name.split(".").length-1];
           image.mv("./images/" + imagename, function (error, result) {
             if (error) throw error;
