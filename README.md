@@ -63,7 +63,7 @@ Before starting :checkered_flag:, you need to have [Git](https://git-scm.com) an
 
 ## :checkered_flag: Starting
 
-```bash
+
 # Clone this project
 $ git clone https://github.com/MohammedAymane/Api-Design-news-Api-
 
