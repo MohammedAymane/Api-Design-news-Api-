@@ -3,7 +3,7 @@
 
 <h1 align="center">TP Api Design</h1>
 
-## :dart: About
+# :dart: About
 
 Small CRUD project for news management 
 
