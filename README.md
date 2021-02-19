@@ -65,18 +65,34 @@ Before starting :checkered_flag:, you need to have [Git](https://git-scm.com) an
 
 ```bash
 # Clone this project
-$ git clone https://github.com/{{YOUR_GITHUB_USERNAME}}/tp-api-design
+$ git clone https://github.com/MohammedAymane/Api-Design-news-Api-
 
 # Access
 $ cd tp-api-design
 
-# Install dependencies
-$ yarn
+# Setup the BackEnd
 
-# Run the project
-$ yarn start
+## Change directory to the Server folder
+$ cd Server
 
-# The server will initialize in the <http://localhost:3000>
+## Install the dependencies
+$ npm install
+
+## Run the server
+$ node server
+
+# Setup the FrontEnd
+
+## Change directory to the Client folder
+$ cd Client
+
+## Install the dependencies
+$ npm install
+
+## Run the server
+$ npm start
+
+# The server will initialize in the <http://localhost:20699>
 ```
 
 ## :memo: License
