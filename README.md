@@ -45,7 +45,7 @@ $ npm install
 ```
 $ node server
 ```
-### Setup the FrontEnd
+## Setup the FrontEnd
 
 #### Change directory to the Client folder
 ```
