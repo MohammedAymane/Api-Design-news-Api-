@@ -1,8 +1,4 @@
 <div align="center" id="top"> 
-
-&#xa0;
-
-  <!-- <a href="https://tpapidesign.netlify.app">Demo</a> -->
 </div>
 
 <h1 align="center">TP Api Design</h1>
