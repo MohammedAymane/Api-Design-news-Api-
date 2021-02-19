@@ -1,5 +1,4 @@
 <div align="center" id="top"> 
-  <img src="./.github/app.gif" alt="TP Api Design" />
 
 &#xa0;
 
@@ -8,15 +7,6 @@
 
 <h1 align="center">TP Api Design</h1>
 
-<p align="center">
-  <img alt="Github top language" src="https://img.shields.io/github/languages/top/{{YOUR_GITHUB_USERNAME}}/tp-api-design?color=56BEB8">
-
-  <img alt="Github language count" src="https://img.shields.io/github/languages/count/{{YOUR_GITHUB_USERNAME}}/tp-api-design?color=56BEB8">
-
-  <img alt="Repository size" src="https://img.shields.io/github/repo-size/{{YOUR_GITHUB_USERNAME}}/tp-api-design?color=56BEB8">
-
-  <img alt="License" src="https://img.shields.io/github/license/{{YOUR_GITHUB_USERNAME}}/tp-api-design?color=56BEB8">
-</p>
 
 <!-- Status -->
 
@@ -40,13 +30,7 @@
 
 ## :dart: About
 
-Describe your project
-
-## :sparkles: Features
-
-:heavy_check_mark: Feature 1;\
-:heavy_check_mark: Feature 2;\
-:heavy_check_mark: Feature 3;
+Small CRUD project for news management 
 
 ## :rocket: Technologies
 
