@@ -20,7 +20,7 @@ The following tools were used in this project:
 
 Before starting :checkered_flag:, you need to have [Git](https://git-scm.com) and [Node](https://nodejs.org/en/) installed.
 
-## Clone this project
+## Clone the project
 ```
 $ git clone https://github.com/MohammedAymane/Api-Design-news-Api-
 ```
