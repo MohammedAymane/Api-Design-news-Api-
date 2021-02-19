@@ -64,33 +64,40 @@ Before starting :checkered_flag:, you need to have [Git](https://git-scm.com) an
 ## :checkered_flag: Starting
 
 
-# Clone this project
+## Clone this project
 ```
 $ git clone https://github.com/MohammedAymane/Api-Design-news-Api-
 ```
-# Access
+## Access
+```
 $ cd tp-api-design
+```
+## Setup the BackEnd
 
-# Setup the BackEnd
-
-## Change directory to the Server folder
+### Change directory to the Server folder
+```
 $ cd Server
-
-## Install the dependencies
+```
+### Install the dependencies
+```
 $ npm install
-
-## Run the server
+```
+### Run the server
+```
 $ node server
+```
+## Setup the FrontEnd
 
-# Setup the FrontEnd
-
-## Change directory to the Client folder
+### Change directory to the Client folder
+```
 $ cd Client
-
-## Install the dependencies
+```
+### Install the dependencies
+```
 $ npm install
-
-## Run the server
+```
+### Run the server
+```
 $ npm start
-
-# The server will initialize in the <http://localhost:20699>
+```
+### The server will initialize in the <http://localhost:20699>
