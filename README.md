@@ -65,8 +65,9 @@ Before starting :checkered_flag:, you need to have [Git](https://git-scm.com) an
 
 
 # Clone this project
+```
 $ git clone https://github.com/MohammedAymane/Api-Design-news-Api-
-
+```
 # Access
 $ cd tp-api-design
 
@@ -93,14 +94,3 @@ $ npm install
 $ npm start
 
 # The server will initialize in the <http://localhost:20699>
-```
-
-## :memo: License
-
-This project is under license from MIT. For more details, see the [LICENSE](LICENSE.md) file.
-
-Made with :heart: by <a href="https://github.com/{{YOUR_GITHUB_USERNAME}}" target="_blank">{{YOUR_NAME}}</a>
-
-&#xa0;
-
-<a href="#top">Back to top</a>
