@@ -32,16 +32,10 @@ $ git clone https://github.com/MohammedAymane/Api-Design-news-Api-
 $ cd tp-api-design
 ```
 
-## Setup the BackEnd
+## Setup the app
 
 ```
-$ npm install
-```
-
-## Setup the FrontEnd
-
-```
-$ cd Client;npm install;cd ..
+$ npm install;cd Client;npm install;cd ..
 ```
 
 #### Run the app
