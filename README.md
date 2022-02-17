@@ -5,7 +5,7 @@
 
 # :dart: About
 
-Small CRUD project for news management 
+Small CRUD project for news management
 
 ## :rocket: Technologies
 
@@ -21,39 +21,33 @@ The following tools were used in this project:
 Before starting :checkered_flag:, you need to have [Git](https://git-scm.com) and [Node](https://nodejs.org/en/) installed.
 
 ## Clone the project
+
 ```
 $ git clone https://github.com/MohammedAymane/Api-Design-news-Api-
 ```
+
 ## Access
+
 ```
 $ cd tp-api-design
 ```
+
 ## Setup the BackEnd
 
-#### Change directory to the Server folder
-```
-$ cd Server
-```
-#### Install the dependencies
 ```
 $ npm install
 ```
-#### Run the server
-```
-$ node server
-```
+
 ## Setup the FrontEnd
 
-#### Change directory to the Client folder
 ```
-$ cd Client
+$ cd Client;npm install;cd ..
 ```
-#### Install the dependencies
-```
-$ npm install
-```
-#### Run the server
+
+#### Run the app
+
 ```
 $ npm start
 ```
-#### The server will initialize in the <http://localhost:20699>
+
+#### The app will initialize at <http://localhost:20699>
